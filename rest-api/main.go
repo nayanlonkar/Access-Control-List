@@ -27,7 +27,7 @@ func init() {
 
 	dbConn, err := driver.NewMysqlConnection(config.Config().Database)
 	if nil != err {
-		log.Printf("Error while creating db connectiion:%s", err.Error())
+		log.Printf("Error while creating db connection:%s", err.Error())
 		os.Exit(1)
 	}
 

@@ -33,6 +33,8 @@ func init() {
 
 	handlers = []handler.IHTTPHandler{
 		httpHandler.NewUserHandler(dbConn),
+		httpHandler.NewGroupHandler(dbConn),
+		httpHandler.NewAdminHandler(dbConn),
 	}
 }
 

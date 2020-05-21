@@ -35,6 +35,7 @@ func init() {
 		httpHandler.NewUserHandler(dbConn),
 		httpHandler.NewGroupHandler(dbConn),
 		httpHandler.NewAdminHandler(dbConn),
+		httpHandler.NewUsergroupHandler(dbConn),
 	}
 }
 

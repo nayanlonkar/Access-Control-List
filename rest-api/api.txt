@@ -47,3 +47,15 @@ post object
 }
 
 -----------------------------------------------------------------------
+
+------------------------------ usergroup api ----------------------------
+http://localhost:9090/webapi/v1/usergroup			- get	- get all usergroup present in the db
+http://localhost:9090/webapi/v1/usergroup/{id}		- getbyid	- get group_id based on user_id (list of group_id)
+http://localhost:9090/webapi/v1/usergroup			- post  - create entry in database
+post object
+{
+	"user_id": 1,
+	"group_id": 3
+}
+
+-----------------------------------------------------------------------

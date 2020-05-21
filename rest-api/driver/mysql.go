@@ -268,23 +268,47 @@ func GetAll(conn *sql.DB, object model.IModel, limit, offset int64) ([]interface
 		return nil, err
 	}
 
+	// defer row.Close()
+	// objects := make([]interface{}, 0)
+	// for row.Next() {
+	// 	if nil != err {
+	// 		log.Printf("Error row.Columns(): %s\n\tError Query: %s\n", err.Error(), query)
+	// 		return nil, err
+	// 	}
+
+	// 	err = row.Scan(pointers...)
+
+	// 	if nil != err {
+	// 		log.Printf("Error: row.Scan: %s\n", err.Error())
+	// 		return nil, err
+	// 	}
+
+	// 	objects = append(objects, object)
+
+	// }
+
+	// return objects, nil
+	//****************************************
 	defer row.Close()
 	objects := make([]interface{}, 0)
+	recds, err := row.Columns()
 	for row.Next() {
 		if nil != err {
 			log.Printf("Error row.Columns(): %s\n\tError Query: %s\n", err.Error(), query)
 			return nil, err
 		}
-
-		err = row.Scan(pointers...)
+		values := make([]interface{}, len(recds))
+		recdsWrite := make([]string, len(recds))
+		for index, _ := range recds {
+			values[index] = &recdsWrite[index]
+		}
+		err = row.Scan(values...)
 		if nil != err {
 			log.Printf("Error: row.Scan: %s\n", err.Error())
 			return nil, err
 		}
-
-		objects = append(objects, object)
+		objects = append(objects, values)
 	}
-
 	return objects, nil
 }
 

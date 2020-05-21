@@ -1,0 +1,7 @@
+-----------------------users table-------------------------------
+http://localhost:9090/webapi/v1/user        - get all
+http://localhost:9090/webapi/v1/user/{id}   - get by id
+http://localhost:9090/webapi/v1/user        - post
+http://localhost:9090/webapi/v1/user/{id}   - delete
+
+

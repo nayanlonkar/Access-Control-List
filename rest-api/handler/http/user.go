@@ -79,7 +79,7 @@ func (user *User) Update(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// set logged in user id for tracking update
-		usr.UpdatedBy = 0
+		// usr.UpdatedBy = 0
 
 		iUsr, err = user.repo.Update(r.Context(), usr)
 		if nil != err {

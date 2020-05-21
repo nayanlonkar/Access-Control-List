@@ -11,3 +11,9 @@ http://localhost:9090/webapi/v1/group/{id}      - get by id
 http://localhost:9090/webapi/v1/group           - post
 http://localhost:9090/webapi/v1/group/{id}      - delete
 
+---------------------------- admin table ---------------------------
+to check whether user is admin or not
+http://localhost:9090/webapi/v1/admin           - get all
+http://localhost:9090/webapi/v1/admin/{id}      - get by id
+http://localhost:9090/webapi/v1/admin           - post
+http://localhost:9090/webapi/v1/admin/{id}      - delete

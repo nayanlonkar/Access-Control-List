@@ -52,3 +52,8 @@ func (user *userRepository) GetAll(cntx context.Context) ([]interface{}, error) 
 	obj := &model.User{}
 	return driver.GetAll(user.conn, obj, 0, 0)
 }
+
+func (user *userRepository) Login(cntx context.Context, id int64, password string) (interface{}, error) {
+	obj := new(model.User)
+	return driver.Login(user.conn, obj, id, password)
+}

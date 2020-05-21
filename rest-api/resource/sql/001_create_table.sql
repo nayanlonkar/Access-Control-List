@@ -36,8 +36,9 @@ CREATE TABLE IF NOT EXISTS files (
 
 # admin/normal
 CREATE TABLE IF NOT EXISTS userRole (
-    user_id     INT       PRIMARY  KEY,
-    role        VARCHAR(20) 
+    id     INT       PRIMARY  KEY,
+    role        VARCHAR(20),
+	FOREIGN KEY (id) REFERENCES users(id) 
 )ENGINE = INNODB CHARACTER SET=utf8;
 
 # permission table 

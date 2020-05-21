@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS files (
 
 # admin/normal
 CREATE TABLE IF NOT EXISTS adminList (
-    id     INT       PRIMARY  KEY,
+    id     INT 		PRIMARY KEY		NOT NULL,
     role        VARCHAR(20),
 	FOREIGN KEY (id) REFERENCES users(id) 
 )ENGINE = INNODB CHARACTER SET=utf8;

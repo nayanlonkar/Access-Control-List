@@ -11,6 +11,8 @@ INSERT INTO users(first_name, last_name, password) VALUES ("Carol", "Danvers", "
 INSERT INTO users(first_name, last_name, password) VALUES ("Nick", "Fury", "password9");
 INSERT INTO users(first_name, last_name, password) VALUES ("Pepper", "Potts", "password10");
 
+INSERT INTO adminList(id, role) VALUES (1 , "admin");
+
 
 INSERT INTO groups1(group_name, group_info) VALUES("grp_1", "group 1");
 INSERT INTO groups1(group_name, group_info) VALUES("grp_2", "group 2");

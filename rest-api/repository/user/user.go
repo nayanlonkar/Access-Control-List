@@ -45,7 +45,7 @@ func (user *userRepository) Update(cntx context.Context, obj interface{}) (inter
 
 func (user *userRepository) Delete(cntx context.Context, id int64) error {
 	obj := &model.User{Id: id}
-	return driver.SoftDeleteById(user.conn, obj, id)
+	return driver.DeleteById(user.conn, obj, id)
 }
 
 func (user *userRepository) GetAll(cntx context.Context) ([]interface{}, error) {

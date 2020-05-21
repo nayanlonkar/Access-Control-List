@@ -45,7 +45,7 @@ func (group *groupRepository) Update(cntx context.Context, obj interface{}) (int
 
 func (group *groupRepository) Delete(cntx context.Context, id int64) error {
 	obj := &model.Group{Id: id}
-	return driver.SoftDeleteById(group.conn, obj, id)
+	return driver.DeleteById(group.conn, obj, id)
 }
 
 func (group *groupRepository) GetAll(cntx context.Context) ([]interface{}, error) {

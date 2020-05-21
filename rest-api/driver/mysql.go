@@ -288,7 +288,7 @@ func GetAll(conn *sql.DB, object model.IModel, limit, offset int64) ([]interface
 	return objects, nil
 }
 
-func DeleteById(conn *sql.DB, object model.IModel, id int64) (sql.Result, error) {
+func DeleteById(conn *sql.DB, object model.IModel, id int64) error {
 	var queryBuffer bytes.Buffer
 	queryBuffer.WriteString("DELETE FROM ")
 	queryBuffer.WriteString(object.Table())
@@ -300,36 +300,12 @@ func DeleteById(conn *sql.DB, object model.IModel, id int64) (sql.Result, error)
 	if nil != err {
 		log.Printf("Delete Syntax Error: %s\n\tError Query: %s : %s\n",
 			err.Error(), object.String(), query)
-		return nil, err
-	}
-
-	defer stmt.Close()
-	result, err := stmt.Exec(id)
-	if nil != err {
-		log.Printf("Delete Execute Error: %s\nError Query: %s : %s\n",
-			err.Error(), object.String(), query)
-	}
-
-	return result, err
-}
-
-func SoftDeleteById(conn *sql.DB, object model.IModel, id int64) error {
-	var queryBuffer bytes.Buffer
-	queryBuffer.WriteString("UPDATE ")
-	queryBuffer.WriteString(object.Table())
-	queryBuffer.WriteString(" SET deleted = 1  WHERE id = ?")
-
-	query := queryBuffer.String()
-	//	log.Println("Delete statement is: %s", query)
-	stmt, err := conn.Prepare(query)
-	if nil != err {
-		log.Printf("Delete Syntax Error: %s\n\tError Query: %s : %s\n",
-			err.Error(), object.String(), query)
 		return err
 	}
 
 	defer stmt.Close()
-	_, err = stmt.Exec(id)
+	result, err := stmt.Exec(id)
+	log.Println(result)
 	if nil != err {
 		log.Printf("Delete Execute Error: %s\nError Query: %s : %s\n",
 			err.Error(), object.String(), query)

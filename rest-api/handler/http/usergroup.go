@@ -31,6 +31,7 @@ func NewUsergroupHandler(conn *sql.DB) *Usergroup {
 func (usergroup *Usergroup) GetHTTPHandler() []*handler.HTTPHandler {
 	return []*handler.HTTPHandler{
 		&handler.HTTPHandler{Authenticated: true, Method: http.MethodGet, Path: "usergroup/{id}", Func: usergroup.GetByID},
+		&handler.HTTPHandler{Authenticated: true, Method: http.MethodGet, Path: "usergroup1/{id}", Func: usergroup.GetByGID},
 		&handler.HTTPHandler{Authenticated: true, Method: http.MethodPost, Path: "usergroup", Func: usergroup.Create},
 		&handler.HTTPHandler{Authenticated: true, Method: http.MethodPut, Path: "usergroup/{id}", Func: usergroup.Update},
 		&handler.HTTPHandler{Authenticated: true, Method: http.MethodDelete, Path: "usergroup/{id}", Func: usergroup.Delete},
@@ -47,6 +48,22 @@ func (usergroup *Usergroup) GetByID(w http.ResponseWriter, r *http.Request) {
 		}
 
 		usr, err = usergroup.repo1.GetGroupByID(r.Context(), id)
+		break
+	}
+
+	handler.WriteJSONResponse(w, r, usr, http.StatusOK, err)
+}
+
+func (usergroup *Usergroup) GetByGID(w http.ResponseWriter, r *http.Request) {
+	var usr interface{}
+	id, err := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
+	for {
+		if nil != err {
+			break
+		}
+
+		// usr, err = usergroup.repo1.GetGroupByID(r.Context(), id)
+		usr, err = usergroup.repo1.GetUserByGID(r.Context(), id)
 		break
 	}
 

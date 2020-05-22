@@ -62,3 +62,9 @@ func (usergroup *usergroupRepository) GetGroupByID(cntx context.Context, id int6
 	obj := new(model.Usergroup)
 	return driver.GetGroupById(usergroup.conn, obj, id)
 }
+
+func (usergroup *usergroupRepository) GetUserByGID(cntx context.Context, id int64) (interface{}, error) {
+	obj := new(model.Usergroup)
+	// return driver.GetGroupById(usergroup.conn, obj, id)
+	return driver.GetUserByGId(usergroup.conn, obj, id)
+}

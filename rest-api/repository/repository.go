@@ -21,6 +21,11 @@ type JRepository interface {
 
 type UGRepository interface {
 	GetGroupByID(context.Context, int64) (interface{}, error)
+	GetUserByGID(context.Context, int64) (interface{}, error)
+}
+
+type FRepository interface {
+	GetFilesByPID(context.Context, int64) (interface{}, error)
 }
 
 type Repository struct {
@@ -51,5 +56,13 @@ func (repo *Repository) Login(cntx context.Context, id int64, password string) (
 }
 
 func (repo *Repository) GetGroupByID(conn *sql.DB, object model.IModel, id int64) (obj model.IModel, err error) {
+	return
+}
+
+func (repo *Repository) GetUserByGID(conn *sql.DB, object model.IModel, id int64) (obj model.IModel, err error) {
+	return
+}
+
+func (repo *Repository) GetFilesByPID(conn *sql.DB, object model.IModel, id int64) (obj model.IModel, err error) {
 	return
 }

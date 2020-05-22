@@ -1,4 +1,5 @@
------------------------ users table -------------------------------
+----------------------- users table ---------------------------------------------------------------
+
 http://localhost:9090/webapi/v1/user        - get all
 http://localhost:9090/webapi/v1/user/{id}   - get by id
 http://localhost:9090/webapi/v1/user        - post
@@ -10,11 +11,11 @@ post api object
 	"last_name": "Doe",
 	"password": "password11"
 }
------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 
 
 
-------------------------- group table -----------------------------
+------------------------- group table ----------------------------------------------------------------
 http://localhost:9090/webapi/v1/group           - get all
 http://localhost:9090/webapi/v1/group/{id}      - get by id
 http://localhost:9090/webapi/v1/group           - post
@@ -25,19 +26,20 @@ post api object
 	"group_name": "maroon 5",
 	"group_info": "band from california"
 }
------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 
 
----------------------------- admin table ---------------------------
+---------------------------- admin table -------------------------------------------------------------
 to check whether user is admin or not. 
 http://localhost:9090/webapi/v1/admin           - get all
 http://localhost:9090/webapi/v1/admin/{id}      - get by id
 http://localhost:9090/webapi/v1/admin           - post
 http://localhost:9090/webapi/v1/admin/{id}      - delete
------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 
 
------------------------------- login api ----------------------------
+------------------------------ login api --------------------------------------------------------------
+
 http://localhost:9090/webapi/v1/login           - post
 
 post object
@@ -46,9 +48,10 @@ post object
 	"password": "password2"
 }
 
------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 
------------------------------- usergroup api ----------------------------
+------------------------------ usergroup api -----------------------------------------------------------
+
 http://localhost:9090/webapi/v1/usergroup			- get	- get all usergroup present in the db
 http://localhost:9090/webapi/v1/usergroup/{id}		- getbyid	- get group_id based on user_id (list of group_id)
 http://localhost:9090/webapi/v1/usergroup			- post  - create entry in database
@@ -60,4 +63,25 @@ post object
 
 http://localhost:9090/webapi/v1/usergroup/{id}			- get by id	- get all groups based on user id
 http://localhost:9090/webapi/v1/usergroup1/{id}			- get by id - get all users based on group id
------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+
+------------------------------------- files api --------------------------------------------------------
+
+http://localhost:9090/webapi/v1/files					- get all
+http://localhost:9090/webapi/v1/files/{id}				- get by id 
+http://localhost:9090/webapi/v1/files/{id}				- delete by id
+http://localhost:9090/webapi/v1/files					- post 
+
+post object 
+{
+	"file_name": "f6.txt",
+	"file_type": "file",
+	"parent_id": 2
+}
+
+http://localhost:9090/webapi/v1/files1/{pid}			- get files name and type by parent id
+														here pid is parent_id
+
+--------------------------------------------------------------------------------------------------------
+

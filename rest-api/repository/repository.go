@@ -24,6 +24,10 @@ type UGRepository interface {
 	GetUserByGID(context.Context, int64) (interface{}, error)
 }
 
+type FRepository interface {
+	GetFilesByPID(context.Context, int64) (interface{}, error)
+}
+
 type Repository struct {
 }
 
@@ -56,5 +60,9 @@ func (repo *Repository) GetGroupByID(conn *sql.DB, object model.IModel, id int64
 }
 
 func (repo *Repository) GetUserByGID(conn *sql.DB, object model.IModel, id int64) (obj model.IModel, err error) {
+	return
+}
+
+func (repo *Repository) GetFilesByPID(conn *sql.DB, object model.IModel, id int64) (obj model.IModel, err error) {
 	return
 }
